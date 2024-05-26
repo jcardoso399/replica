@@ -1,0 +1,21 @@
+MiejReplicaSet = new ReplSetTest({name: "MireplicaSet", nodes: 3})
+MiejReplicaSet.startSet()
+conn=new Mongo("DESKTOP-NMBULJI:20000")
+TestBD=con.getDB(“proyecto”)
+TestBD.equipos.insert (
+... {
+... ciudad:"Manchester",
+... })
+TestBD.equipos.find().pretty()
+TestBD.jugadores.updateOne({"posicion"."portero"},{$set: {posicion: "Guarda meta" }});
+connSecondary = new Mongo("DESKTOP-NMBULJI:20001")
+secondaryTestDB = connSecondary.getDB("proyecto")
+secondaryTestDB = connSecondary.getDB("proyecto")
+TestBD.equipos.count()
+TestBD.equipos.find().pretty()
+connSecondary = new Mongo("DESKTOP-NMBULJI:20002")
+secondaryTestDB = connSecondary.getDB("proyecto")
+secondaryTestDB.isMaster()
+TestBD.equipos.count()
+TestBD.equipos.find().pretty()
+MiejReplicaSet.stopSet(); print("replica Set detenido");
